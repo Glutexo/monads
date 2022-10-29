@@ -8,9 +8,18 @@ defmodule Bag do
   def unpack(%Bag{content: content}) do
     content
   end
+
+  def map(bag, function) do
+    bag
+	|> unpack()
+	|> function.()
+	|> pack()
+  end
 end
 
 sugar = 1
 bag = Bag.pack(sugar)
-content = Bag.unpack(bag)
-IO.inspect(content)
+Bag.map(bag, &(&1 / 2))
+|> IO.inspect()
+#content = Bag.unpack(bag)
+#IO.inspect(content)

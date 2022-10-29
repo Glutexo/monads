@@ -30,6 +30,27 @@ defmodule Sugar do
   end
 end
 
+defmodule Peanuts do
+  defstruct properties: []
+
+  def weigh() do
+    %Peanuts{}
+  end
+
+  def roast(peanuts = %Peanuts{}) do
+    _modify(peanuts, :roasted)
+  end
+
+  def salt(peanuts = %Peanuts{}) do
+  	_modify(peanuts, :salted)
+  end
+
+  def _modify(%Peanuts{properties: original}, property) do
+    extended = [property | original]
+    %Peanuts{properties: extended}    
+  end
+end
+
 defmodule Identity do
   def identity(value) do
   	value
@@ -52,3 +73,10 @@ IO.inspect(halved == bag)
 
 content = Bag.unpack(bag)
 IO.inspect(content)
+
+peanuts = Peanuts.weigh()
+IO.inspect(peanuts)
+roasted = Peanuts.roast(peanuts)
+IO.inspect(roasted)
+salted = Peanuts.salt(roasted)
+IO.inspect(salted)

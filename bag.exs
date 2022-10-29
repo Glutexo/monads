@@ -1,16 +1,16 @@
 defmodule Bag do
-  defstruct [:contents]
+  defstruct [:content]
 
-  def pack(contents) do
-    %Bag{contents: contents}
+  def pack(content) do
+    %Bag{content: content}
   end
 
-  def unpack(%Bag{contents: contents}) do
-    contents
+  def unpack(%Bag{content: content}) do
+    content
   end
 end
 
 sugar = 1
 bag = Bag.pack(sugar)
-contents = Bag.unpack(bag)
-IO.inspect(contents)
+content = Bag.unpack(bag)
+IO.inspect(content)

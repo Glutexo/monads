@@ -42,11 +42,13 @@ IO.inspect(sugar)
 bag = Bag.pack(sugar)
 IO.inspect(bag)
 
-Bag.map(bag, &Identity.identity(&1))
-|> IO.inspect()
+identified = Bag.map(bag, &Identity.identity(&1))
+IO.inspect(identified)
+IO.inspect(identified == bag)
 
-Bag.map(bag, &(Sugar.halve(&1)))
-|> IO.inspect()
+halved = Bag.map(bag, &(Sugar.halve(&1)))
+IO.inspect(halved)
+IO.inspect(halved == bag)
 
 content = Bag.unpack(bag)
 IO.inspect(content)

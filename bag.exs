@@ -30,11 +30,20 @@ defmodule Sugar do
   end
 end
 
+defmodule Identity do
+  def identity(value) do
+  	value
+  end
+end
+
 sugar = Sugar.weigh(1)
 IO.inspect(sugar)
 
 bag = Bag.pack(sugar)
 IO.inspect(bag)
+
+Bag.map(bag, &Identity.identity(&1))
+|> IO.inspect()
 
 Bag.map(bag, &(Sugar.halve(&1)))
 |> IO.inspect()

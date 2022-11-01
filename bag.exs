@@ -60,18 +60,18 @@ end
 sugar = Sugar.weigh(1)
 IO.inspect(sugar)
 
-bag = Bag.pack(sugar)
-IO.inspect(bag)
+sugar_bag = Bag.pack(sugar)
+IO.inspect(sugar_bag)
 
-identified = Bag.map(bag, &Identity.identity(&1))
+identified = Bag.map(sugar_bag, &Identity.identity(&1))
 IO.inspect(identified)
-IO.inspect(identified == bag)
+IO.inspect(identified == sugar_bag)
 
-halved = Bag.map(bag, &(Sugar.halve(&1)))
+halved = Bag.map(sugar_bag, &(Sugar.halve(&1)))
 IO.inspect(halved)
-IO.inspect(halved == bag)
+IO.inspect(halved == sugar_bag)
 
-content = Bag.unpack(bag)
+content = Bag.unpack(sugar_bag)
 IO.inspect(content)
 
 peanuts = Peanuts.weigh()

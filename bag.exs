@@ -80,3 +80,25 @@ roasted = Peanuts.roast(peanuts)
 IO.inspect(roasted)
 salted = Peanuts.salt(roasted)
 IO.inspect(salted)
+
+peanuts_bag = Bag.pack(peanuts)
+IO.inspect(peanuts_bag)
+
+roasted_salted_map =
+  peanuts_bag
+  |> Bag.map(&Peanuts.roast(&1))
+  |> Bag.map(&Peanuts.salt(&1))
+IO.inspect(roasted_salted_map)
+
+roasted_salted_composed =
+  Bag.map(
+    peanuts_bag,
+	fn bag ->
+	  bag
+	  |> Peanuts.roast()
+	  |> Peanuts.salt()
+	end
+  )
+IO.inspect(roasted_salted_composed)
+
+IO.inspect(roasted_salted_map == roasted_salted_composed)
